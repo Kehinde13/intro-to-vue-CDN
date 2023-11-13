@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="show">
+            <h1>{{ title }}</h1>
+            <h1>{{ author }}</h1>
+            <h1>{{ age }}</h1>
+
+            <button @click="age++">increase age</button>
+            <button @click="age--">decrease age</button>
+            <button @click="changeTitle">Change Title</button>
+        </div>
+        <div v-else>
+             click toggleDisplay
+        </div>
+        <button @click="toggleDisplay">
+            toggle Display
+        </button>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+</body>
+</html>
