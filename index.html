@@ -4,6 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Document</title>
+    <style>
+        .fav {
+            background-color: bisque;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -14,7 +19,9 @@
 
             <button @click="age++">increase age</button>
             <button @click="age--">decrease age</button>
-            <button @click="changeTitle">Change Title</button>
+            <button @click="changeTitle($event, 5)">Change Title</button>
+            <!-- vue atomatically get the event object even when its not passed to it-->
+            <!-- but if we want to pass in an argument we have to specify event with $event and then pass the arg -->
         </div>
         <div v-else>
              click toggleDisplay
@@ -22,6 +29,21 @@
         <button @click="toggleDisplay">
             toggle Display
         </button>
+
+        <!-- Outputting Lists with v-for -->
+        
+        <div>
+            <h1>OG Books</h1>
+            <ul>
+                <!-- conditionally adding a class dynamically -->
+                <li @click="toggleFav(book)" v-for="book in books" :class="{ fav: book.isFav }"><!-- the fav class should only apply based of the truthy value of isFav-->
+                    <!-- Attribute binding is when we bind an attribute dynamically to an element -->
+                    <img v-bind:src="book.img" :alt="book.title"> <!-- Attribute binding with v-bind or just :-->
+                   <p>{{ book.title }} - {{ book.author }}</p>
+                </li>
+            </ul>
+            
+        </div>
     </div>
 
     <script type="module" src="./index.js"></script>
